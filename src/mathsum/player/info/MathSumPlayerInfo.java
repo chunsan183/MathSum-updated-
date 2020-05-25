@@ -5,6 +5,8 @@
  */
 package mathsum.player.info;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -17,8 +19,9 @@ public class MathSumPlayerInfo {
     public static Player [] playerDatabase = new Player[10];
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
         
         for (int i = 0; i < playerDatabase.length; i++){
@@ -26,7 +29,24 @@ public class MathSumPlayerInfo {
             playerDatabase[i] = new Player();
             
         }
+        LoadData.loadFile();
         
+        for (int i = 0; i < playerDatabase.length; i++){
+            
+            if(playerDatabase[i].getPlayerName().equals("-") == false){
+                System.out.println(playerDatabase[i].getPlayerName());
+                System.out.println(playerDatabase[i].getHighScore());
+                System.out.println(playerDatabase[i].getLowScore());
+                System.out.println(Arrays.toString(playerDatabase[i].getHighToLow()));
+                System.out.println(Arrays.toString(playerDatabase[i].getLowToHigh()));
+            }
+            
+            else{
+                break;
+            }
+            
+        }
+        /*
         Random rand = new Random();
         int index = 0;
         char a = 'a';
@@ -58,8 +78,17 @@ public class MathSumPlayerInfo {
             System.out.println(scores[i] + " ");
         }
         
+        scores = playerDatabase[3].SortHighToLow();
        
+        for (int i = 0; i < scores.length; i++){
+            System.out.println(scores[i] + " ");
+            
+        }
         
+        scores = playerDatabase[3].SortLowToHigh();
+        System.out.println();
+        for (int i = 0; i < scores.length; i++){
+            System.out.println(scores[i] + " ");
+        }*/
     }
-    
 }

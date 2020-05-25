@@ -98,5 +98,43 @@ public class Player {
         this.lowtoHigh = lowtoHigh;
     }
     
+    int [] SortHighToLow(){
+        
+        for (int i = 0; i < hightoLow.length - 1; i++){
+            int index = i;
+            
+            for (int j = i + 1; j < hightoLow.length; j++){
+                if (hightoLow[j] < hightoLow[index]){
+                    index = j;
+                }
+            }
+            if (index != i){
+                int smallestNumber = hightoLow[index];
+                hightoLow[index] = hightoLow[i];
+                hightoLow[i] = smallestNumber;
+            }
+        }
+        
+        return hightoLow;
+    }
     
-}
+    int [] SortLowToHigh(){
+        
+        for (int i = 0; i < lowtoHigh.length - 1; i++){
+            int index = i;
+            
+            for (int j = i + 1; j < lowtoHigh.length; j++){
+                if (lowtoHigh[j] < lowtoHigh[index]){
+                    index = j;
+                }
+            }
+            if (index != i){
+                int smallestNumber = lowtoHigh[index];
+                lowtoHigh[index] = lowtoHigh[i];
+                lowtoHigh[i] = smallestNumber;
+            }
+        }
+        
+        return lowtoHigh;
+        }
+    }
